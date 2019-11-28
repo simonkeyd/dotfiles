@@ -1,0 +1,117 @@
+call plug#begin('~/.vim/plugged')
+Plug 'dracula/vim'
+Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-abolish'
+Plug 'PProvost/vim-ps1'
+Plug 'pearofducks/ansible-vim'
+call plug#end()
+
+" Enable syntax highlighting
+syntax on
+
+" utf-8
+set encoding=utf-8
+set wildmenu
+
+" Show partial commands in the last line of the screen
+set showcmd
+
+" Highlight searches
+set incsearch
+set hlsearch
+
+" Modelines have historically been a source of security vulnerabilities. As
+" such, it may be a good idea to disable them and use the securemodelines
+" script, <http://www.vim.org/scripts/script.php?script_id=1876>.
+" set nomodeline
+
+
+"------------------------------------------------------------
+" Usability options {{{1
+"
+" These are options that users frequently set in their .vimrc. Some of them
+" change Vim's behaviour in ways which deviate from the true Vi way, but
+" which are considered to add usability. Which, if any, of these options to
+" use is very much a personal preference, but they are harmless.
+
+" Use case insensitive search, except when using capital letters
+"set ignorecase
+"set smartcase
+
+" When opening a new line and no filetype-specific indenting is enabled, keep
+" the same indent as the line you're currently on. Useful for READMEs, etc.
+set autoindent
+set smartindent
+set backspace=indent,eol,start
+
+" keep 4 lines off edges when scrolling
+set scrolloff=4
+
+" Display the cursor position on the last line of the screen or in the status
+" line of a window
+"set ruler
+
+" Always display the status line, even if only one window is displayed
+set laststatus=2
+"set statusline=\ %t\ »\ %y\ »%=«\ %{strftime('%T')}\ «\ c%c%V\ «\ ±%l\/%-4L
+
+" Display line numbers on the left
+set number
+
+set nocursorline
+
+"------------------------------------------------------------
+" Indentation options {{{1
+"
+" Indentation settings according to personal preference.
+
+" Indentation settings for using 4 spaces instead of tabs.
+" Do not change 'tabstop' from its default value of 8 with this setup.
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+
+"------------------------------------------------------------
+" COLORS SETTINGS
+set background=dark
+colorscheme dracula
+"
+"------------------------------------------------------------
+" FileType
+autocmd BufNewFile,BufRead *.txt set ft=sh
+"autocmd BufNewFile,BufRead *.tws set ft=tws
+au BufRead,BufNewFile *.tws set filetype=tws
+au FileType * execute 'setlocal dict+=vim\dict\'.&filetype.'.txt'
+
+"------------------------------------------------------------
+" NERDTree
+autocmd VimEnter * NERDTree | wincmd p
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let g:NERDTreeWinSize=30
+let g:NERDTreeShowHidden=1
+
+"------------------------------------------------------------
+" lightline
+let g:lightline = {
+  \ 'colorscheme': 'dracula',
+  \ 'separator': { 'left': '', 'right': '' },
+  \ 'subseparator': { 'left': '', 'right': '' },
+  \ }
+
+"------------------------------------------------------------
+" Bindings/keymaps
+
+" F2 toggle relative number
+map <F2> :set relativenumber!<CR>
+
+" F7 NERDTree
+map <F7> :NERDTreeToggle<CR>
+
+" F8 TagBar
+"map <F8> :TagbarToggle<CR>
+
+" completion options
+set completeopt=menu,preview
