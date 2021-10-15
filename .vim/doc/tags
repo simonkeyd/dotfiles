@@ -1,0 +1,4 @@
+binds	custom-binds.txt	/*binds*
+custom-binds.txt	custom-binds.txt	/*custom-binds.txt*
+fzf-binds	custom-binds.txt	/*fzf-binds*
+generic-binds	custom-binds.txt	/*generic-binds*

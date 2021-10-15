@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# packages to bootstrap
+packages="vim zsh"
+
+install_fzf() {
+  fzf_folder=${HOME}/.fzf
+  if [[ ! -d "$fzf_folder" ]]
+  then
+    git clone --depth 1 https://github.com/junegunn/fzf.git $fzf_folder
+    ${HOME}/.fzf/install --all
+  fi
+}
+
+bootstrap_vim() {
+  echo "*** Bootstraping Vim"
+  # install vim-plug if not already
+  if [[ ! -e "${HOME}/.vim/autoload/plug.vim" ]]
+  then
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  fi
+  sed -n '/call plug#begin/,/call plug#end/p' ~/.vimrc > /tmp/vimrc_temp
+  vim -u /tmp/vimrc_temp '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+  rm /tmp/vimrc_temp
+}
+
+bootstrap_zsh() {
+  echo "*** Create ~/.ssh folder for zsh ssh-agent to work"
+  mkdir -p ${HOME}/.ssh
+  echo "*** Bootstraping zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
+  # install zsh-autosuggestions plugin
+  zsh_autosuggestions_dir=~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+  if [[ ! -d "$zsh_autosuggestions_dir" ]]
+  then
+    git clone https://github.com/zsh-users/zsh-autosuggestions $zsh_autosuggestions_dir
+  fi
+  echo "*** Enter user password for default shell change"
+  chsh -s $(which zsh)
+}
+
+install_fzf
+
+for package in ${packages}
+do
+  "bootstrap_${package}"
+done
