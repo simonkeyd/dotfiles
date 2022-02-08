@@ -93,6 +93,8 @@ export VISUAL=${EDITOR}
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+(cat ~/.cache/wal/sequences &)
+
 for file in ~/.fzf.zsh ~/.venv-ansible/bin/activate
 do
   [ -f "$file" ] && source $file
