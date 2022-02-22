@@ -127,7 +127,7 @@ font-1 = "feather:size=12;3"
 ;   modules-right = ipc clock
 
 modules-left = launcher workspaces
-modules-center = spotify spotify-prev spotify-play-pause spotify-next
+modules-center = spotify
 modules-right = alsa backlight battery wired-network wireless-network date
 
 ; The separator will be inserted between the output of each module
