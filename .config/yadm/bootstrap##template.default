@@ -2,7 +2,7 @@
 
 # Leverage git space-checkout to prevent !README and LICENSE files from being pulled
 yadm gitconfig core.sparseCheckout true
-yadm sparse-checkout set '/*' '!README.md' '!LICENSE'
+yadm sparse-checkout set '/*' '!README.md' '!LICENSE' '!imgs/*'
 
 {% if yadm.distro == "arch" %}
 pacman_packages="i3-gaps yay vim zsh tmux rofi picom pywal ttf-iosevka-nerd"
