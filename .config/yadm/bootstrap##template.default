@@ -4,8 +4,22 @@
 yadm gitconfig core.sparseCheckout true
 yadm sparse-checkout set '/*' '!README.md' '!LICENSE'
 
+{% if yadm.distro == "arch" %}
+pacman_packages="i3-gaps yay vim zsh tmux rofi picom pywal ttf-iosevka-nerd"
+aur_packages="termite polybar nerd-fonts-droid-sans-mono ttf-feather"
+{% endif %}
 # packages to bootstrap
-packages="vim zsh"
+bootstrap_packages="vim zsh"
+
+{% if yadm.distro == "arch" %}
+install_packages() {
+  pacman_packages="$1"
+  aur_packages="$2"
+
+  sudo pacman -Sy $pacman_packages
+  yay -Sy $aur_packages
+}
+{% endif %}
 
 install_fzf() {
   fzf_folder=${HOME}/.fzf
@@ -44,9 +58,13 @@ bootstrap_zsh() {
   chsh -s $(which zsh)
 }
 
+{% if yadm.distro == "arch" %}
+install_packages $pacman_packages $aur_packages
+{% endif %}
+
 install_fzf
 
-for package in ${packages}
+for package in ${bootstrap_packages}
 do
   "bootstrap_${package}"
 done
