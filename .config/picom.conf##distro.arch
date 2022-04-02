@@ -1,1 +1,4 @@
 inactive-opacity = 1.0;
+opacity-rule = [
+    "85:I3_FLOATING_WINDOW@:c",
+];
