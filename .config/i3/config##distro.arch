@@ -60,7 +60,7 @@ bindsym $mod+o 			resize grow width 2 px or 2 ppt
 bindsym $mod+shit+o   sticky toggle
 
 # screenshots
-bindsym Print exec scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Images/screenshots/'
+bindsym Print exec scrot -q 100 '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Images/screenshots/'
                 
 # enter fullscreen mode for the focused container
 bindsym $mod+f 			fullscreen toggle
