@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Leverage git space-checkout to prevent !README and LICENSE files from being pulled
+yadm gitconfig core.sparseCheckout true
+yadm sparse-checkout set '/*' '!README.md' '!LICENSE'
+
 # packages to bootstrap
 packages="vim zsh"
 
