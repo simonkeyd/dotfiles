@@ -5,8 +5,8 @@ yadm gitconfig core.sparseCheckout true
 yadm sparse-checkout set '/*' '!README.md' '!LICENSE' '!imgs/*'
 
 {% if yadm.distro == "arch" %}
-pacman_packages="i3-gaps yay vim zsh tmux rofi picom pywal ttf-iosevka-nerd"
-aur_packages="termite polybar nerd-fonts-droid-sans-mono ttf-feather"
+pacman_packages="i3-gaps yay alacritty vim zsh tmux rofi picom pywal ttf-iosevka-nerd"
+aur_packages="polybar nerd-fonts-droid-sans-mono ttf-feather"
 {% endif %}
 # packages to bootstrap
 bootstrap_packages="vim zsh"

@@ -1,0 +1,23 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+env:
+  TERM: xterm-256color
+
+font:
+  normal:
+    family: DroidSansMono NerdFont
+    style: Regular
+
+  bold:
+    family: DroidSansMono NerdFont
+    style: Bold
+
+  italic:
+    family: DroidSansMono NerdFont
+    style: Italic
+
+  bold_italic:
+    family: DroidSansMono NerdFont
+    style: Bold Italic
+
+  size: 8

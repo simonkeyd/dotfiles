@@ -6,7 +6,7 @@
 * os: [Arch Linux](https://wiki.archlinux.org/)
 * wm: [i3-gaps](https://github.com/Airblader/i3)
 * aur helper: [yay](https://github.com/Jguer/yay)
-* terminal emulator: [termite](https://github.com/thestinger/termite)
+* terminal emulator: [alacritty](https://github.com/alacritty/alacritty)
 * terminal multiplexer: [tmux](https://github.com/tmux/tmux)
 * shell: [zsh](://www.zsh.org/)
 * editor: [vim](https://www.vim.org/)
