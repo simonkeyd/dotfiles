@@ -65,12 +65,15 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+zstyle :omz:plugins:ssh-agent agent-forwarding yes
+zstyle :omz:plugins:ssh-agent identities {id_rsa,sow_ed25519}
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ssh-agent fzf zsh-autosuggestions)
+plugins=(git ssh-agent fzf zsh-autosuggestions kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -80,6 +83,8 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR=vim
 export VISUAL=${EDITOR}
+export PATH=$PATH:$HOME/go/bin:$HOME/.krew/bin
+export GOPATH=/home/sow/go
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -93,9 +98,15 @@ export VISUAL=${EDITOR}
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias kns="kubens"
+alias tf="terraform"
+
 (cat ~/.cache/wal/sequences &)
 
 for file in ~/.fzf.zsh ~/.venv-ansible/bin/activate
 do
   [ -f "$file" ] && source $file
 done
+
+source '/opt/kube-ps1/kube-ps1.sh'
+PROMPT='$(kube_ps1)'$PROMPT
