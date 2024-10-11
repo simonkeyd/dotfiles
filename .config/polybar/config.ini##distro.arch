@@ -54,8 +54,8 @@ height = 30
 ; the percentage can optionally be extended with a pixel offset like so:
 ; 50%:-10, this will result in an offset in the x or y direction 
 ; of 50% minus 10 pixels
-offset-x = 30
-offset-y = 7
+#offset-x = 30
+#offset-y = 7
 
 ; Background ARGB color (e.g. #f00, #ff992a, #ddff1023)
 background = ${color.background}
@@ -72,8 +72,8 @@ foreground = ${color.foreground}
 ; doesn't get rounded
 ; Individual top/bottom values can be defined using:
 ;   radius-{top,bottom}
-radius-top = 15
-radius-bottom = 15
+radius-top = 0
+radius-bottom = 0
 
 ; Under-/overline pixel size and argb color
 ; Individual values can be defined using:
@@ -93,16 +93,16 @@ line-color = ${color.primary}
 ; the border is placed withing this area. So you effectively only have the
 ; following horizontal space on the bar:
 ;   width - border-right-size - border-left-size
-border-top-size = 4
+border-top-size = 0
 border-bottom-size = 0
 border-bottom-color = ${color.primary}
-border-left-size = 30
-border-right-size= 30
+border-left-size = 0
+border-right-size= 0
 
 ; Number of spaces to add at the beginning/end of the bar
 ; Individual side values can be defined using:
 ;   padding-{left,right}
-padding = 3
+padding = 6
 
 ; Number of spaces to add before/after each module
 ; Individual side values can be defined using:
@@ -155,7 +155,7 @@ locale =
 ;   center
 ;   right
 ;   none
-tray-position = center
+tray-position = none
 
 ; If true, the bar will not shift its
 ; contents when the tray changes
